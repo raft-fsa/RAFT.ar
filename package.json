@@ -1,0 +1,20 @@
+{
+  "name": "RAFT.ar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./serve/bin/serve -d ./client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raft-fsa/RAFT.ar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raft-fsa/RAFT.ar/issues"
+  },
+  "homepage": "https://github.com/raft-fsa/RAFT.ar#readme"
+}

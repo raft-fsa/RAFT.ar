@@ -1,5 +1,3 @@
-// Copyright (c) 2018 8th Wall, Inc.
-
 const os = require('os')
 const dns = require('dns')
 const path = require('path')
@@ -142,7 +140,7 @@ nextAvailable(process.env.PORT || DEFAULT_PORT).then((PORT) => {
     console.log('ERROR: Port ' + process.env.PORT + ' is in use by another process.')
     process.exit(1)
   }
-  
+
   // Launch WebpackDevServer.
   const devServer = new WebpackDevServer(compiler, serverConfig)
   devServer.listen(PORT, serverConfig.host, err => {
@@ -155,7 +153,7 @@ nextAvailable(process.env.PORT || DEFAULT_PORT).then((PORT) => {
       `  Serving  : ${contentBase}\n\n` +
       `  IMPORTANT: Make sure to copy the entire "Listening" URL above into your browser,\n` +
       `  including both the protocol "${protocol}://" at the beginning, and port ":${PORT}" number at the end.`
-  
+
     qr.toString(url, { type: 'terminal' }, (err, qrtext) => {
       const msg = err ? message : `${message}\n\nOr scan the QR code:\n\n${qrtext}`
       console.log(boxen(chalk.bold(chalk.cyan(msg)), { padding: 1, borderColor: 'green', margin: 1 }))

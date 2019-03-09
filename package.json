@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/raft-fsa/RAFT.ar/issues"
   },
-  "homepage": "https://github.com/raft-fsa/RAFT.ar#readme"
+  "homepage": "https://github.com/raft-fsa/RAFT.ar#readme",
+  "dependencies": {}
 }

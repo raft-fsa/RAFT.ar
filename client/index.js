@@ -1,20 +1,41 @@
 const onxrloaded = () => {
 
   let animateCube
+
   const initXrScene = ({scene, camera}) => {
+    // CUBE
     const geometry = new THREE.CubeGeometry(2, 2, 2);
-    const material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('../img/logo.png'), transparent: true})
+    const material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/logo.png'), transparent: true})
     const cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 1, -10);
     animateCube = cube;
     scene.add(cube)
 
+    // LIGHT
     const ambientLight = new THREE.AmbientLight( 0xFFFFFF, 1 );
-
     const light1 = new THREE.DirectionalLight( 0xFFFFFF, 2, 50);
-
     light1.position.x = -5;
     scene.add(ambientLight, light1)
+
+    // TEXT
+    const loader = new THREE.FontLoader()
+    loader.load("fonts/Allerta Stencil_Regular.js", function (font) {
+      const textGeometry = new THREE.TextGeometry("Domino's Pizza", {
+        font: font,
+        size: 5,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const textMaterial = new THREE.MeshLambertMaterial(
+        {color: 0x526EFF, specular: 0x000000}
+      )
+      const text = new THREE.Mesh(textGeometry, textMaterial)
+      scene.add(text)
+      text.position.set(-5, 3, -50)
+    })
 
     camera.position.set(0, 3, 0)
   }

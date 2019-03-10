@@ -20,7 +20,7 @@ const onxrloaded = () => {
     // TEXT
     const loader = new THREE.FontLoader()
     loader.load("fonts/Allerta Stencil_Regular.js", function (font) {
-      const textGeometry = new THREE.TextGeometry("Domino's Pizza", {
+      const textGeometry = new THREE.TextGeometry("Pizza Hut", {
         font: font,
         size: 5,
         height: 1,

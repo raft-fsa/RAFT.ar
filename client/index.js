@@ -20,21 +20,39 @@ const onxrloaded = () => {
     // TEXT
     const loader = new THREE.FontLoader()
     loader.load("fonts/Allerta Stencil_Regular.js", function (font) {
-      const textGeometry = new THREE.TextGeometry("Pizza Hut", {
+      const textGeometry = new THREE.TextGeometry("Testy McTesterson", {
         font: font,
-        size: 5,
-        height: 1,
-        curveSegments: 1,
-        bevelThickness: 0.1,
+        size: 0.5,
+        height: 0.05,
+        curveSegments: 20,
+        bevelThickness: 0.05,
         bevelSize: 0.1,
-        bevelEnabled: true
+        bevelEnabled: false,
+        bevelSegments: 5
       })
       const textMaterial = new THREE.MeshLambertMaterial(
         {color: 0x526EFF, specular: 0x000000}
       )
       const text = new THREE.Mesh(textGeometry, textMaterial)
-      scene.add(text)
-      text.position.set(-5, 3, -50)
+
+      const text2Geometry = new THREE.TextGeometry("Phone: 123456789", {
+        font: font,
+        size: 0.5,
+        height: 0.1,
+        curveSegments: 20,
+        bevelThickness: 0.05,
+        bevelSize: 0.1,
+        bevelEnabled: false,
+        bevelSegments: 5
+      })
+      const text2Material = new THREE.MeshLambertMaterial(
+        {color: 0xFF4040, specular: 0x000000}
+      )
+      const text2 = new THREE.Mesh(text2Geometry, text2Material)
+
+      scene.add(text, text2)
+      text.position.set(-2, 4, -2)
+      text2.position.set(-2, 1, -5)
     })
 
     camera.position.set(0, 3, 0)

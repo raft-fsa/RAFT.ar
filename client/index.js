@@ -18,43 +18,94 @@ const onxrloaded = () => {
     scene.add(ambientLight, light1)
 
     // TEXT
-    const loader = new THREE.FontLoader()
-    loader.load("fonts/Allerta Stencil_Regular.js", function (font) {
-      const textGeometry = new THREE.TextGeometry("Testy McTesterson", {
+
+    const ryanLoader = new THREE.FontLoader()
+    ryanLoader.load("fonts/Amatic SC_Bold.js", function (font) {
+      const nameGeometry = new THREE.TextGeometry("Ryan Ferreras", {
         font: font,
-        size: 0.5,
-        height: 0.05,
-        curveSegments: 20,
-        bevelThickness: 0.05,
+        size: 7,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
         bevelSize: 0.1,
-        bevelEnabled: false,
-        bevelSegments: 5
+        bevelEnabled: true
       })
-      const textMaterial = new THREE.MeshLambertMaterial(
+      const phoneGeometry = new THREE.TextGeometry("(201) 867-5309", {
+        font: font,
+        size: 7,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const gitGeometry = new THREE.TextGeometry("github.com/ryanferreras", {
+        font: font,
+        size: 7,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const material = new THREE.MeshLambertMaterial(
         {color: 0x526EFF, specular: 0x000000}
       )
-      const text = new THREE.Mesh(textGeometry, textMaterial)
-
-      const text2Geometry = new THREE.TextGeometry("Phone: 123456789", {
-        font: font,
-        size: 0.5,
-        height: 0.1,
-        curveSegments: 20,
-        bevelThickness: 0.05,
-        bevelSize: 0.1,
-        bevelEnabled: false,
-        bevelSegments: 5
-      })
-      const text2Material = new THREE.MeshLambertMaterial(
-        {color: 0xFF4040, specular: 0x000000}
-      )
-      const text2 = new THREE.Mesh(text2Geometry, text2Material)
-
-      scene.add(text, text2)
-      text.position.set(-2, 4, -2)
-      text2.position.set(-2, 1, -5)
+      const name = new THREE.Mesh(nameGeometry, material)
+      const phone = new THREE.Mesh(phoneGeometry, material)
+      const git = new THREE.Mesh(gitGeometry, material)
+      scene.add(name, phone, git)
+      name.position.set(-90, 20, -50)
+      phone.position.set(-90, 10, -50)
+      git.position.set(-90, 0, -50)
+      name.lookAt(camera.position)
+      phone.lookAt(camera.position)
+      git.lookAt(camera.position)
     })
 
+    const alvinLoader = new THREE.FontLoader()
+    alvinLoader.load("fonts/Didact Gothic_Regular.js", function (font) {
+      const nameGeometry = new THREE.TextGeometry("Alvin Tang", {
+        font: font,
+        size: 5,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const phoneGeometry = new THREE.TextGeometry("(678) 999-8212", {
+        font: font,
+        size: 5,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const gitGeometry = new THREE.TextGeometry("github.com/alvinjtang", {
+        font: font,
+        size: 5,
+        height: 1,
+        curveSegments: 1,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelEnabled: true
+      })
+      const material = new THREE.MeshLambertMaterial(
+        {color: 0xF88379}
+      )
+      const name = new THREE.Mesh(nameGeometry, material)
+      const phone = new THREE.Mesh(phoneGeometry, material)
+      const git = new THREE.Mesh(gitGeometry, material)
+      scene.add(name, phone, git)
+      name.position.set(40, 20, -50)
+      phone.position.set(40, 10, -50)
+      git.position.set(40, 0, -50)
+      name.lookAt(camera.position)
+      phone.lookAt(camera.position)
+      git.lookAt(camera.position)
+    })
     camera.position.set(0, 3, 0)
   }
 

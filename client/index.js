@@ -7,18 +7,47 @@ const onxrloaded = () => {
   let animateNameCubeTwo
   let animatePhoneCubeTwo
   let animateGitCubeTwo
+  // let animateSphere
   
   const initXrScene = ({scene, camera}) => {
     // CUBE
-    const geometry = new THREE.CubeGeometry(2, 2, 2);
+    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const iconGeometry = new THREE.BoxGeometry(5, 5, 0.5);
+      //materials
     const material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/logo.png'), transparent: true})
+    const nameMaterials = [
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/name-icon.png'), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/name-icon.png'), transparent: true, side: THREE.FrontSide})
+    ]
+    const phoneMaterials = [
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/phone-icon.png'), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/phone-icon.png'), transparent: true, side: THREE.FrontSide})
+    ]
+    const gitMaterials = [
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load(), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/git-icon.png'), transparent: true, side: THREE.FrontSide}),
+      new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/git-icon.png'), transparent: true, side: THREE.FrontSide})
+    ]
+      //meshes
     const cube = new THREE.Mesh(geometry, material);
-    const nameCubeOne = new THREE.Mesh(geometry, material);
-    const phoneCubeOne = new THREE.Mesh(geometry, material);
-    const gitCubeOne = new THREE.Mesh(geometry, material);
-    const nameCubeTwo = new THREE.Mesh(geometry, material);
-    const phoneCubeTwo = new THREE.Mesh(geometry, material);
-    const gitCubeTwo = new THREE.Mesh(geometry, material);
+    const nameCubeOne = new THREE.Mesh(iconGeometry, nameMaterials);
+    const phoneCubeOne = new THREE.Mesh(iconGeometry, phoneMaterials);
+    const gitCubeOne = new THREE.Mesh(iconGeometry, gitMaterials);
+    const nameCubeTwo = new THREE.Mesh(iconGeometry, nameMaterials);
+    const phoneCubeTwo = new THREE.Mesh(iconGeometry, phoneMaterials);
+    const gitCubeTwo = new THREE.Mesh(iconGeometry, gitMaterials);
+      //animations
     animateCube = cube;
     animateNameCubeOne = nameCubeOne;
     animatePhoneCubeOne = phoneCubeOne;
@@ -26,15 +55,24 @@ const onxrloaded = () => {
     animateNameCubeTwo = nameCubeTwo;
     animatePhoneCubeTwo = phoneCubeTwo;
     animateGitCubeTwo = gitCubeTwo;
+      //positions
     cube.position.set(0, 2, -12);
-    nameCubeOne.position.set(-95, 24, -50);
-    phoneCubeOne.position.set(-95, 14, -50);
-    gitCubeOne.position.set(-95, 4, -50);
-    nameCubeTwo.position.set(35, 21, -50);
-    phoneCubeTwo.position.set(35, 11, -50);
-    gitCubeTwo.position.set(35, 1, -50);
+    nameCubeOne.position.set(-96, 24, -50);
+    phoneCubeOne.position.set(-97, 14, -50);
+    gitCubeOne.position.set(-98, 4, -50);
+    nameCubeTwo.position.set(35, 17, -50);
+    phoneCubeTwo.position.set(35, 10, -50);
+    gitCubeTwo.position.set(35, 3, -50);
+      //scene
     scene.add(cube, nameCubeOne, phoneCubeOne, gitCubeOne, nameCubeTwo, phoneCubeTwo, gitCubeTwo)
 
+    //SPHERE
+    // const sphereGeometry = new THREE.SphereGeometry(0.2,8,6);
+    // const sphereMaterial = new THREE.MeshLambertMaterial({color: 0xffff00});
+    // const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+    // animateSphere = sphere;
+    // sphere.position.set(0, 2, -12);
+    // scene.add(sphere);
 
     // LIGHT
     const ambientLight = new THREE.AmbientLight( 0xFFFFFF, 1 );
@@ -74,7 +112,7 @@ const onxrloaded = () => {
         bevelEnabled: true
       })
       const textMaterial = new THREE.MeshLambertMaterial(
-        {color: 0x526EFF, specular: 0x000000}
+        {color: 0x2299E8, specular: 0x000000}
       )
       const name = new THREE.Mesh(nameGeometry, textMaterial)
       const phone = new THREE.Mesh(phoneGeometry, textMaterial)
@@ -92,7 +130,7 @@ const onxrloaded = () => {
     alvinLoader.load("fonts/Didact Gothic_Regular.js", function (font) {
       const nameGeometry = new THREE.TextGeometry("Alvin Tang", {
         font: font,
-        size: 5,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -101,7 +139,7 @@ const onxrloaded = () => {
       })
       const phoneGeometry = new THREE.TextGeometry("(678) 999-8212", {
         font: font,
-        size: 5,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -110,7 +148,7 @@ const onxrloaded = () => {
       })
       const gitGeometry = new THREE.TextGeometry("github.com/alvinjtang", {
         font: font,
-        size: 5,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -118,15 +156,15 @@ const onxrloaded = () => {
         bevelEnabled: true
       })
       const textMaterial = new THREE.MeshLambertMaterial(
-        {color: 0xF88379}
+        {color: 0xE75480}
       )
       const name = new THREE.Mesh(nameGeometry, textMaterial)
       const phone = new THREE.Mesh(phoneGeometry, textMaterial)
       const git = new THREE.Mesh(gitGeometry, textMaterial)
       scene.add(name, phone, git)
-      name.position.set(40, 20, -50)
-      phone.position.set(40, 10, -50)
-      git.position.set(40, 0, -50)
+      name.position.set(40, 16, -50)
+      phone.position.set(40, 9, -50)
+      git.position.set(40, 2, -50)
       name.lookAt(camera.position)
       phone.lookAt(camera.position)
       git.lookAt(camera.position)
@@ -156,18 +194,15 @@ const onxrloaded = () => {
     onUpdate: () => {
       animateCube.rotation.x += 0.05
       animateCube.rotation.y += 0.05
-      animateNameCubeOne.rotation.x += 0.05
       animateNameCubeOne.rotation.y += 0.05
-      animatePhoneCubeOne.rotation.x += 0.05
       animatePhoneCubeOne.rotation.y += 0.05
-      animateGitCubeOne.rotation.x += 0.05
       animateGitCubeOne.rotation.y += 0.05
-      animateNameCubeTwo.rotation.x += 0.05
       animateNameCubeTwo.rotation.y += 0.05
-      animatePhoneCubeTwo.rotation.x += 0.05
       animatePhoneCubeTwo.rotation.y += 0.05
-      animateGitCubeTwo.rotation.x += 0.05
       animateGitCubeTwo.rotation.y += 0.05
+      // animateSphere.translateZ(0.1)
+      // animateSphere.rotation.x += 0.1
+      // animateSphere.rotation.y += 0.1
     },
   })
 

@@ -7,6 +7,7 @@ const onxrloaded = () => {
   let animateNameCubeTwo
   let animatePhoneCubeTwo
   let animateGitCubeTwo
+  // let animateSphere
   
   const initXrScene = ({scene, camera}) => {
     // CUBE
@@ -59,11 +60,19 @@ const onxrloaded = () => {
     nameCubeOne.position.set(-96, 24, -50);
     phoneCubeOne.position.set(-97, 14, -50);
     gitCubeOne.position.set(-98, 4, -50);
-    nameCubeTwo.position.set(35, 21, -50);
-    phoneCubeTwo.position.set(35, 11, -50);
-    gitCubeTwo.position.set(35, 1, -50);
+    nameCubeTwo.position.set(35, 17, -50);
+    phoneCubeTwo.position.set(35, 10, -50);
+    gitCubeTwo.position.set(35, 3, -50);
       //scene
     scene.add(cube, nameCubeOne, phoneCubeOne, gitCubeOne, nameCubeTwo, phoneCubeTwo, gitCubeTwo)
+
+    //SPHERE
+    // const sphereGeometry = new THREE.SphereGeometry(0.2,8,6);
+    // const sphereMaterial = new THREE.MeshLambertMaterial({color: 0xffff00});
+    // const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+    // animateSphere = sphere;
+    // sphere.position.set(0, 2, -12);
+    // scene.add(sphere);
 
     // LIGHT
     const ambientLight = new THREE.AmbientLight( 0xFFFFFF, 1 );
@@ -121,7 +130,7 @@ const onxrloaded = () => {
     alvinLoader.load("fonts/Didact Gothic_Regular.js", function (font) {
       const nameGeometry = new THREE.TextGeometry("Alvin Tang", {
         font: font,
-        size: 4,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -130,7 +139,7 @@ const onxrloaded = () => {
       })
       const phoneGeometry = new THREE.TextGeometry("(678) 999-8212", {
         font: font,
-        size: 4,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -139,7 +148,7 @@ const onxrloaded = () => {
       })
       const gitGeometry = new THREE.TextGeometry("github.com/alvinjtang", {
         font: font,
-        size: 4,
+        size: 3.5,
         height: 1,
         curveSegments: 1,
         bevelThickness: 0.1,
@@ -153,9 +162,9 @@ const onxrloaded = () => {
       const phone = new THREE.Mesh(phoneGeometry, textMaterial)
       const git = new THREE.Mesh(gitGeometry, textMaterial)
       scene.add(name, phone, git)
-      name.position.set(40, 20, -50)
-      phone.position.set(40, 10, -50)
-      git.position.set(40, 0, -50)
+      name.position.set(40, 16, -50)
+      phone.position.set(40, 9, -50)
+      git.position.set(40, 2, -50)
       name.lookAt(camera.position)
       phone.lookAt(camera.position)
       git.lookAt(camera.position)
@@ -191,6 +200,9 @@ const onxrloaded = () => {
       animateNameCubeTwo.rotation.y += 0.05
       animatePhoneCubeTwo.rotation.y += 0.05
       animateGitCubeTwo.rotation.y += 0.05
+      // animateSphere.translateZ(0.1)
+      // animateSphere.rotation.x += 0.1
+      // animateSphere.rotation.y += 0.1
     },
   })
 

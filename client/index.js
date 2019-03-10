@@ -1,15 +1,40 @@
 const onxrloaded = () => {
 
   let animateCube
-
+  let animateNameCubeOne
+  let animatePhoneCubeOne
+  let animateGitCubeOne
+  let animateNameCubeTwo
+  let animatePhoneCubeTwo
+  let animateGitCubeTwo
+  
   const initXrScene = ({scene, camera}) => {
     // CUBE
     const geometry = new THREE.CubeGeometry(2, 2, 2);
     const material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/logo.png'), transparent: true})
     const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 1, -10);
+    const nameCubeOne = new THREE.Mesh(geometry, material);
+    const phoneCubeOne = new THREE.Mesh(geometry, material);
+    const gitCubeOne = new THREE.Mesh(geometry, material);
+    const nameCubeTwo = new THREE.Mesh(geometry, material);
+    const phoneCubeTwo = new THREE.Mesh(geometry, material);
+    const gitCubeTwo = new THREE.Mesh(geometry, material);
     animateCube = cube;
-    scene.add(cube)
+    animateNameCubeOne = nameCubeOne;
+    animatePhoneCubeOne = phoneCubeOne;
+    animateGitCubeOne = gitCubeOne;
+    animateNameCubeTwo = nameCubeTwo;
+    animatePhoneCubeTwo = phoneCubeTwo;
+    animateGitCubeTwo = gitCubeTwo;
+    cube.position.set(0, 2, -12);
+    nameCubeOne.position.set(-95, 24, -50);
+    phoneCubeOne.position.set(-95, 14, -50);
+    gitCubeOne.position.set(-95, 4, -50);
+    nameCubeTwo.position.set(35, 21, -50);
+    phoneCubeTwo.position.set(35, 11, -50);
+    gitCubeTwo.position.set(35, 1, -50);
+    scene.add(cube, nameCubeOne, phoneCubeOne, gitCubeOne, nameCubeTwo, phoneCubeTwo, gitCubeTwo)
+
 
     // LIGHT
     const ambientLight = new THREE.AmbientLight( 0xFFFFFF, 1 );
@@ -48,12 +73,12 @@ const onxrloaded = () => {
         bevelSize: 0.1,
         bevelEnabled: true
       })
-      const material = new THREE.MeshLambertMaterial(
+      const textMaterial = new THREE.MeshLambertMaterial(
         {color: 0x526EFF, specular: 0x000000}
       )
-      const name = new THREE.Mesh(nameGeometry, material)
-      const phone = new THREE.Mesh(phoneGeometry, material)
-      const git = new THREE.Mesh(gitGeometry, material)
+      const name = new THREE.Mesh(nameGeometry, textMaterial)
+      const phone = new THREE.Mesh(phoneGeometry, textMaterial)
+      const git = new THREE.Mesh(gitGeometry, textMaterial)
       scene.add(name, phone, git)
       name.position.set(-90, 20, -50)
       phone.position.set(-90, 10, -50)
@@ -92,12 +117,12 @@ const onxrloaded = () => {
         bevelSize: 0.1,
         bevelEnabled: true
       })
-      const material = new THREE.MeshLambertMaterial(
+      const textMaterial = new THREE.MeshLambertMaterial(
         {color: 0xF88379}
       )
-      const name = new THREE.Mesh(nameGeometry, material)
-      const phone = new THREE.Mesh(phoneGeometry, material)
-      const git = new THREE.Mesh(gitGeometry, material)
+      const name = new THREE.Mesh(nameGeometry, textMaterial)
+      const phone = new THREE.Mesh(phoneGeometry, textMaterial)
+      const git = new THREE.Mesh(gitGeometry, textMaterial)
       scene.add(name, phone, git)
       name.position.set(40, 20, -50)
       phone.position.set(40, 10, -50)
@@ -131,6 +156,18 @@ const onxrloaded = () => {
     onUpdate: () => {
       animateCube.rotation.x += 0.05
       animateCube.rotation.y += 0.05
+      animateNameCubeOne.rotation.x += 0.05
+      animateNameCubeOne.rotation.y += 0.05
+      animatePhoneCubeOne.rotation.x += 0.05
+      animatePhoneCubeOne.rotation.y += 0.05
+      animateGitCubeOne.rotation.x += 0.05
+      animateGitCubeOne.rotation.y += 0.05
+      animateNameCubeTwo.rotation.x += 0.05
+      animateNameCubeTwo.rotation.y += 0.05
+      animatePhoneCubeTwo.rotation.x += 0.05
+      animatePhoneCubeTwo.rotation.y += 0.05
+      animateGitCubeTwo.rotation.x += 0.05
+      animateGitCubeTwo.rotation.y += 0.05
     },
   })
 
